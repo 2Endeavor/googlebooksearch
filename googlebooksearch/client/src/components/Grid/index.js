@@ -14,6 +14,7 @@ export function Row({ fluid, children }) {
 
 // This Col component lets us size bootstrap columns with less syntax
 // e.g. <Col size="md-12"> instead of <div className="col-md-12">
+// Map returns a brand new array that is the same length as the first. Whatever is returned from the callback at each iteration will be placed into that position of the new array
 export function Col({ size, children }) {
   return (
     <div

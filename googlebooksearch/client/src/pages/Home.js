@@ -1,27 +1,32 @@
+// Importing the React component. This is required for all pages
 import React, { Component } from "react";
+// componets that use JPX
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import Form from "../components/Form";
 import Book from "../components/Book";
 import Footer from "../components/Footer";
+// connecting to the routing
 import API from "../utils/API";
+// Bootstrap elements
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
+// setting the state for books. Setting an empty array. Created it as a class. Books will in the array and q is for the query. The message is the starting message
 class Home extends Component {
   state = {
     books: [],
     q: "",
     message: "Search For A Book To Begin!"
   };
-
+// method that allows react to detect changes to state value. Name here can be anything and will 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
-
+// API call
   getBooks = () => {
     API.getBooks(this.state.q)
       .then(res =>
@@ -29,6 +34,7 @@ class Home extends Component {
           books: res.data
         })
       )
+      // set the books state to results.data
       .catch(() =>
         this.setState({
           books: [],
@@ -36,12 +42,12 @@ class Home extends Component {
         })
       );
   };
-
+// The preventDefault will prevent the page from reloading
   handleFormSubmit = event => {
     event.preventDefault();
     this.getBooks();
   };
-
+// takes the state of the book clicked on and creates a post request
   handleBookSave = id => {
     const book = this.state.books.find(book => book.id === id);
 
@@ -55,7 +61,7 @@ class Home extends Component {
       image: book.volumeInfo.imageLinks.thumbnail
     }).then(() => this.getBooks());
   };
-
+// Here we render the page by keeping everything in a container where we provide a form to use to enter the name of the book
   render() {
     return (
       <Container>
@@ -83,6 +89,7 @@ class Home extends Component {
             <Card title="Results">
               {this.state.books.length ? (
                 <List>
+                  // Map returns a brand new array that is the same length as the first. Whatever is returned from the callback at each iteration will be placed into that position of the new array
                   {this.state.books.map(book => (
                     <Book
                       key={book.id}

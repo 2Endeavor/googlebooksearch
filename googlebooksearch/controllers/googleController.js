@@ -13,6 +13,7 @@ module.exports = {
       .get("https://www.googleapis.com/books/v1/volumes", {
         params
       })
+      // Filter return a new array containing only the elements where the callback returns a truthy value
       .then(results =>
         results.data.items.filter(
           result =>

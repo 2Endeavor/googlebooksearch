@@ -1,10 +1,16 @@
+// Importing the React component. This is required for all pages
 import React, { Component } from "react";
+// Imporing Bootstrap components
 import Jumbotron from "../components/Jumbotron";
+// importing the card, book and footer components that will be referenced on this page
 import Card from "../components/Card";
 import Book from "../components/Book";
 import Footer from "../components/Footer";
+// IMporting the API that will be referenced on this page
 import API from "../utils/API";
+// Importing the bootstrap component that will be needed to render the page
 import { Col, Row, Container } from "../components/Grid";
+// This is pulling in a list of books
 import { List } from "../components/List";
 
 class Saved extends Component {
@@ -29,7 +35,7 @@ class Saved extends Component {
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());
   };
-
+// rendering the page that will be used to input books
   render() {
     return (
       <Container>
@@ -48,6 +54,7 @@ class Saved extends Component {
             <Card title="Saved Books" icon="download">
               {this.state.books.length ? (
                 <List>
+                  // Map returns a brand new array that is the same length as the first. Whatever is returned from the callback at each iteration will be placed into that position of the new array
                   {this.state.books.map(book => (
                     <Book
                       key={book._id}

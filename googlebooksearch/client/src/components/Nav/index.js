@@ -29,7 +29,7 @@ class Nav extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWidth);
   }
-
+// Rendering the navbar
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">

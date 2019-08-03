@@ -1,5 +1,5 @@
+// involking the npm packages that will be used
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
