@@ -19,7 +19,7 @@ class Home extends Component {
     q: "",
     message: "Search For A Book To Begin!"
   };
-// method that allows react to detect changes to state value. Name here can be anything and will 
+// method that allows react to detect changes to state value. Name here is set up to reference any of the fields where information was entered.
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -47,7 +47,7 @@ class Home extends Component {
     event.preventDefault();
     this.getBooks();
   };
-// takes the state of the book clicked on and creates a post request
+// With the 'this' statement it is locking on to an instance of the element and searching by the id 
   handleBookSave = id => {
     const book = this.state.books.find(book => book.id === id);
 
@@ -77,6 +77,7 @@ class Home extends Component {
           <Col size="md-12">
             <Card title="Book Search" icon="far fa-book">
               <Form
+              //this shows passing props to a child element
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
                 q={this.state.q}

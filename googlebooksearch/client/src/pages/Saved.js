@@ -55,6 +55,7 @@ class Saved extends Component {
               {this.state.books.length ? (
                 <List>
                   // Map returns a brand new array that is the same length as the first. Whatever is returned from the callback at each iteration will be placed into that position of the new array
+                  The key value is important inside React arrays and without it you will get an error
                   {this.state.books.map(book => (
                     <Book
                       key={book._id}
@@ -75,6 +76,7 @@ class Saved extends Component {
                     />
                   ))}
                 </List>
+                //The colon : is the else statement for if no books exist.
               ) : (
                 <h2 className="text-center">No Saved Books</h2>
               )}
